@@ -4,17 +4,19 @@
 \alias{minFilterCounts}
 \title{Filter low-count genes}
 \usage{
-\code{minFilterCounts(counts, min_count=1, min_libs_perc=0.15)}
+\code{minFilterCounts(counts, min_count=NULL, min_cpm=NULL, min_libs_perc=0.15)}
 }
 \arguments{
 \item{counts}{a matrix or data frame of gene expression counts; should have samples in columns and genes in rows.}
 
-\item{min_count}{numeric value, the minimum count value}
+\item{min_count}{numeric value, the minimum count value. Either this or min_cpm should be specified, but not both.}
 
-\item{min_libs_perc}{numeric value, the minimum percentage of libraries}
+\item{min_cpm}{numeric values, the minimum counts per million value. Either this or min_cpm should be specified, but not both.}
+
+\item{min_libs_perc}{numeric value, the minimum percentage of libraries with counts or cpm equal to or greater than the threshold.}
 }
 \value{
-a matrix or data frame with the same number of columns as \code{counts}
+a filtered matrix or data frame with the same number of columns as \code{counts}, and potentially fewer rows. Counts are retained in the units they are input (using min_cpm does not convert counts to cpm).
 }
 \description{
 This function filters a counts object, removing genes that do not meet a minimum count value in

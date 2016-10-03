@@ -41,10 +41,8 @@ calcNormCounts <- function(counts, design, libID_col="lib.id",
   counts <- designFilterCounts(counts, design, libID_col)
   
   # filter to keep genes that have minimum counts (or cpm) in minimum percent of libraries
-  if (!is.null(min_cpm)) {
-    if (!is.null(min_count)) stop("Both minimum cpm and minimum count were specified; please choose one or the other.")
-    counts <- minFilterCounts(counts, min_cpm, min_libs_perc)
-  } else if (!is.null(min_count)) counts <- minFilterCounts(counts, min_count, min_libs_perc)
+  if (!is.null(min_cpm) | !is.null(min_count))
+    counts <- minFilterCounts(counts, min_count=min_count, min_cpm=min_cpm, min_libs_perc)
   
   # generate DGEList object, and normalize counts
   if (return_DGEcounts | normalize) {
