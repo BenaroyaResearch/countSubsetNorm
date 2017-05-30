@@ -26,18 +26,20 @@
 #' @export
 #' @return a data frame or \code{DGEList} object containing the processed counts.
 #' @usage \code{
-#' calcNormCounts(counts, design, libID_col="lib.id",
-#'                min_count=NULL, min_cpm=NULL, min_libs_perc=0.15,
-#'                normalize=TRUE, norm_method="TMM",
-#'                log2_transform=FALSE, transpose=FALSE, return_DGEcounts=FALSE,
-#'                ...
-#'                )}
-calcNormCounts <- function(counts, design, libID_col="lib.id",
-                           min_count=NULL, min_cpm=NULL, min_libs_perc=0.15,
-                           normalize=TRUE, norm_method="TMM",
-                           log2_transform=FALSE, transpose=FALSE, return_DGEcounts=FALSE,
-                           ...) {
-  # trim counts object to include only desired libraries
+#' calcNormCounts(
+#'   counts, design, libID_col="lib.id",
+#'   min_count=NULL, min_cpm=NULL, min_libs_perc=0.15,
+#'   normalize=TRUE, norm_method="TMM",
+#'   log2_transform=FALSE, transpose=FALSE, return_DGEcounts=FALSE,
+#'   ...)}
+calcNormCounts <-
+  function(
+    counts, design, libID_col="lib.id",
+    min_count=NULL, min_cpm=NULL, min_libs_perc=0.15,
+    normalize=TRUE, norm_method="TMM",
+    log2_transform=FALSE, transpose=FALSE, return_DGEcounts=FALSE,
+    ...) {
+    # trim counts object to include only desired libraries
   counts <- designFilterCounts(counts, design, libID_col)
   
   # filter to keep genes that have minimum counts (or cpm) in minimum percent of libraries
@@ -52,12 +54,16 @@ calcNormCounts <- function(counts, design, libID_col="lib.id",
   if (return_DGEcounts) return(DGEcounts)
   
   if (normalize) {
-    normCounts <- as.data.frame(sweep(counts, 2, DGEcounts$samples$norm.factors, "/"))
+    normCounts <-
+      as.data.frame(
+        sweep(
+          counts, 2,
+          with(DGEcounts$samples, lib.size * norm.factors), "/") * 1000000)
   } else normCounts <- counts
   
   # log-transform and/or transpose counts
   if (log2_transform) normCounts <- log2(normCounts + 1)
   if (transpose) normCounts <- as.data.frame(t(normCounts))
   
-  return(normCounts)
+ normCounts
 }

@@ -5,12 +5,12 @@
 \title{Filter, normalize, and/or convert counts object}
 \usage{
 \code{
-calcNormCounts(counts, design, libID_col="lib.id",
-               min_count=NULL, min_cpm=NULL, min_libs_perc=0.15,
-               normalize=TRUE, norm_method="TMM",
-               log2_transform=FALSE, transpose=FALSE, return_DGEcounts=FALSE,
-               ...
-               )}
+calcNormCounts(
+  counts, design, libID_col="lib.id",
+  min_count=NULL, min_cpm=NULL, min_libs_perc=0.15,
+  normalize=TRUE, norm_method="TMM",
+  log2_transform=FALSE, transpose=FALSE, return_DGEcounts=FALSE,
+  ...)}
 }
 \arguments{
 \item{counts}{a matrix or data frame of gene expression counts. Should have sample in columns and genes in rows.}
