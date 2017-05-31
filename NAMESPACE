@@ -2,6 +2,8 @@
 
 export(calcNormCounts)
 export(designFilterCounts)
+export(extract_counts)
 export(fix_factors)
 export(minFilterCounts)
+export(trim_EList)
 export(varFilterCounts)
