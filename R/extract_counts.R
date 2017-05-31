@@ -4,7 +4,7 @@
 #' by many other functions to enable counts being input as matrices, data.frames, EList or DGEList objects. It
 #' determines the class of the object and returns the counts as a data.frame (default) or matrix.
 #' @param counts an object from which counts can be extracted. May be of class matrix, data.frame, EList, DGElist (others to be added).
-#' @param return_class character, the class for the object to be returned. Defaults to data.frame.
+#' @param return_class optional, the class for the object to be returned. Defaults to NULL, which causes the counts portion of the object to be returned as-is.
 #' @export
 #' @return A matrix or data frame.
 #' @usage \code{
