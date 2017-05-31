@@ -4,12 +4,13 @@
 \alias{extract_counts}
 \title{Extract counts matrix from different types of expression objects}
 \usage{
-extract_counts(counts, return_class = NULL)
+\code{
+extract_counts(counts, return_class=NULL)}
 }
 \arguments{
 \item{counts}{an object from which counts can be extracted. May be of class matrix, data.frame, EList, DGElist (others to be added).}
 
-\item{return_class}{character, the class for the object to be returned. Defaults to data.frame.}
+\item{return_class}{optional, the class for the object to be returned. Defaults to NULL, which causes the counts portion of the object to be returned as-is.}
 }
 \value{
 A matrix or data frame.

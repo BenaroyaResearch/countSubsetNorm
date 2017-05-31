@@ -5,8 +5,8 @@
 #' optionally normalizes, log2-transforms, and/or transposes counts. Finally, it can return either
 #' a DGEList object or a data frame.
 #' @param counts a matrix or data frame of gene expression counts. Should have sample in columns and genes in rows.
-#' @param design a data frame of sample information. At minimum, must contain a column corresponding to sample identifiers matching column names of \code{counts}. Passed to \code{designFilterCounts}.
-#' @param libID_col numeric index or character name of column in \code{design} containing sample identifers matching column names of \code{counts}. Passed to \code{designFilterCounts}.
+#' @param design a data frame of sample information. At minimum, must contain a column corresponding to sample identifiers matching column names of \code{counts}. Passed to \code{design_filter_counts}.
+#' @param libID_col numeric index or character name of column in \code{design} containing sample identifers matching column names of \code{counts}. Passed to \code{design_filter_counts}.
 #' @param min_count numeric, the minimum count for a library to be considered passing threshold for a given gene.
 #' @param min_cpm numeric, the minimum counts per million for a library to be considered passing threshold for a given gene.
 #' @param min_libs_perc numeric, the minimum percentage of libraries that must meet \code{min_count} or \code{min_cpm} threshold for a gene to be retained.
@@ -16,7 +16,7 @@
 #' @param transpose logical, whether to transpose the matrix or data frame of counts.
 #' @param return_DGEcounts logical, whether to return return counts as a \code{DGEList} object. If FALSE, counts are returned as a data frame. Defaults to FALSE.
 #' @param ... (optional) parameters passed to \code{DGEList}.
-#' @details This function utilizes \code{designFilterCounts} and (optionally) \code{minFilterCounts}
+#' @details This function utilizes \code{design_filter_counts} and (optionally) \code{min_filter_counts}
 #'  to filter the counts object. It then (optionally) normalizes the counts, using
 #'  \code{edgeR::calcNormFactors}. It then (optionally) log2-transforms the counts and/or transposes
 #'  the counts object. Finally, it returns the counts either as a data frame, or as a \code{DGEList}
@@ -26,13 +26,13 @@
 #' @export
 #' @return a data frame or \code{DGEList} object containing the processed counts.
 #' @usage \code{
-#' calcNormCounts(
+#' calc_norm_counts(
 #'   counts, design, libID_col="lib.id",
 #'   min_count=NULL, min_cpm=NULL, min_libs_perc=0.15,
 #'   normalize=TRUE, norm_method="TMM",
 #'   log2_transform=FALSE, transpose=FALSE, return_DGEcounts=FALSE,
 #'   ...)}
-calcNormCounts <-
+calc_norm_counts <-
   function(
     counts, design, libID_col="lib.id",
     min_count=NULL, min_cpm=NULL, min_libs_perc=0.15,
@@ -40,11 +40,11 @@ calcNormCounts <-
     log2_transform=FALSE, transpose=FALSE, return_DGEcounts=FALSE,
     ...) {
     # trim counts object to include only desired libraries
-  counts <- designFilterCounts(counts, design, libID_col)
+  counts <- design_filter_counts(counts, design, libID_col)
   
   # filter to keep genes that have minimum counts (or cpm) in minimum percent of libraries
   if (!is.null(min_cpm) | !is.null(min_count))
-    counts <- minFilterCounts(counts, min_count=min_count, min_cpm=min_cpm, min_libs_perc)
+    counts <- min_filter_counts(counts, min_count=min_count, min_cpm=min_cpm, min_libs_perc)
   
   # generate DGEList object, and normalize counts
   if (return_DGEcounts | normalize) {

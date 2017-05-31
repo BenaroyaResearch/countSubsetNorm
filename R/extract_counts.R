@@ -8,7 +8,7 @@
 #' @export
 #' @return A matrix or data frame.
 #' @usage \code{
-#' extract_counts(counts, return_class=NULL)
+#' extract_counts(counts, return_class=NULL)}
 extract_counts <-
   function(counts, return_class=NULL) {
     input_class <- class(counts)

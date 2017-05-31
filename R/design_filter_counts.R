@@ -8,8 +8,8 @@
 #' @details Samples are removed from \code{counts} if their column name does not match an element in column \code{libID_col} of \code{design}.
 #' @export
 #' @return a matrix or data frame with the same number of rows as \code{counts}
-#' @usage \code{designFilterCounts(counts, design, libID_col)}
-designFilterCounts <- function(counts, design, libID_col) {
+#' @usage \code{design_filter_counts(counts, design, libID_col)}
+design_filter_counts <- function(counts, design, libID_col) {
   keepCols <- colnames(counts) %in% design[,libID_col]
   counts <- counts[,keepCols]
 }

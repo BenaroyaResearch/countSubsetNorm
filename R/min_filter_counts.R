@@ -10,8 +10,8 @@
 #'  Note that adding or removing libraries to/from the counts object may change the genes that meet these thresholds.
 #' @export
 #' @return a filtered matrix or data frame with the same number of columns as \code{counts}, and potentially fewer rows. Counts are retained in the units they are input (using min_cpm does not convert counts to cpm).
-#' @usage \code{minFilterCounts(counts, min_count=NULL, min_cpm=NULL, min_libs_perc=0.15)}
-minFilterCounts <-
+#' @usage \code{min_filter_counts(counts, min_count=NULL, min_cpm=NULL, min_libs_perc=0.15)}
+min_filter_counts <-
   function(counts, min_count=NULL, min_cpm=NULL, min_libs_perc=0.15) {
   if (!is.null(min_count)) {
     if (!is.null(min_cpm)) {
