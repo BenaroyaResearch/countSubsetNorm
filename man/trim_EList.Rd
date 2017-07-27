@@ -22,4 +22,3 @@ This function drops samples from an EList object, iterating over all components 
 \details{
 Either \code{keep_samples} or \code{drop_samples} must be specified.
 }
-

@@ -55,4 +55,3 @@ This function utilizes \code{design_filter_counts} and (optionally) \code{min_fi
  For WGCNA analyses, should use \code{log2_transform=TRUE, transpose=TRUE, return_DGECounts=FALSE}.
  For limma analyses, should use \code{log2_transform=FALSE, transpose=FALSE, return_DGECounts=TRUE}.
 }
-

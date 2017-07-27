@@ -20,4 +20,3 @@ This is a helper function to extract the counts matrix from different gene expre
 by many other functions to enable counts being input as matrices, data.frames, EList or DGEList objects. It
 determines the class of the object and returns the counts as a data.frame (default) or matrix.
 }
-

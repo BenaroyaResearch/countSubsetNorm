@@ -18,4 +18,3 @@ class \code{factor}, while leaving other columns unchanged. It is intended to be
 filtering a data frame, so that excess levels do not cause errors or confusion in downstream
 processes.
 }
-

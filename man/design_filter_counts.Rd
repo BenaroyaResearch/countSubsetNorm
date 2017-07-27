@@ -23,4 +23,3 @@ sample annotation object.
 \details{
 Samples are removed from \code{counts} if their column name does not match an element in column \code{libID_col} of \code{design}.
 }
-

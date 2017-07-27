@@ -27,4 +27,3 @@ This function filters a counts object, keeping the \code{n_keep} genes with the 
 \details{
 Variance is calculated for all genes. Genes are then ranked by this variance, and the \code{n_keep} genes with highest variance are retained.
 }
-

@@ -26,4 +26,3 @@ a minimum percentage of libraries
 Genes are removed from \code{counts} if they do not have at least \code{min_count} counts in at least \code{min_libs_perc} % of all libraries.
  Note that adding or removing libraries to/from the counts object may change the genes that meet these thresholds.
 }
-
