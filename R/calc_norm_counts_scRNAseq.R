@@ -10,6 +10,7 @@
 #' @param norm_method character, the method by which to normalize counts. Used only if \code{normalize} is TRUE. Options are "TMM", which uses \code{edgeR::calcNormFactors}; "deconvolution", which uses cell deconvolution as implemented in the package \code{scran}; or "lib_size", simple library size normalization using cpm. Unique partial matches are accepted.
 #' @param log2_transform logical, whether to log2 transform the counts. Defaults to \code{FALSE}.
 #' @param transpose logical, whether to transpose the matrix or data frame of counts.
+#' @param ... (optional) parameters passed to normalization functions.
 #' @details This function (optionally) utilizes \code{min_filter_counts}
 #'  to filter the counts object. It then (optionally) normalizes the counts, using
 #'  one of several methods applicable to single-cell RNA-seq data. It then (optionally)
@@ -29,7 +30,8 @@ calc_norm_counts_scRNAseq <-
     counts,
     min_count=NULL, min_cpm=NULL, min_libs_perc=0.15,
     normalize=TRUE, norm_method="TMM",
-    log2_transform=FALSE, transpose=FALSE) {
+    log2_transform=FALSE, transpose=FALSE,
+    ...) {
     
     norm_method <- tolower(norm_method)
     norm_method <-
@@ -43,19 +45,20 @@ calc_norm_counts_scRNAseq <-
       DGEcounts <-
         edgeR::calcNormFactors(
           edgeR::DGEList(counts),
-          method="TMM")
+          method="TMM", ...)
       normCounts <- edgeR::cpm(DGEcounts, normalized.lib.sizes=TRUE)
     }
     
     # normalize using the cell deconvolution algorithm
     if (normalize & (norm_method == "deconvolution")) {
-      decon_norm_factors <- scran::computeSumFactors(as.matrix(counts))
+      decon_norm_factors <-
+        scran::computeSumFactors(as.matrix(counts), ...)
       normCounts <- as.data.frame(t(t(counts)/decon_norm_factors))
     }
     
     # normalize using library size
     if (normalize & (norm_method == "lib_size")) {
-      normCounts <- edgeR::cpm(counts)
+      normCounts <- edgeR::cpm(counts, ...)
     }
     
     if (normalize) {

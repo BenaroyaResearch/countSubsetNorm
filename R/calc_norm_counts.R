@@ -15,7 +15,7 @@
 #' @param log2_transform logical, whether to log2 transform the counts. Defaults to \code{FALSE}.
 #' @param transpose logical, whether to transpose the matrix or data frame of counts.
 #' @param return_DGEcounts logical, whether to return return counts as a \code{DGEList} object. If FALSE, counts are returned as a data frame. Defaults to FALSE.
-#' @param ... (optional) parameters passed to \code{DGEList}.
+#' @param ... (optional) parameters passed to normalization functions.
 #' @details This function utilizes \code{design_filter_counts} and (optionally) \code{min_filter_counts}
 #'  to filter the counts object. It then (optionally) normalizes the counts, using
 #'  \code{edgeR::calcNormFactors}. It then (optionally) log2-transforms the counts and/or transposes

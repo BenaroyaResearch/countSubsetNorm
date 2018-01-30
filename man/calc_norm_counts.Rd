@@ -35,7 +35,7 @@ calc_norm_counts(
 
 \item{return_DGEcounts}{logical, whether to return return counts as a \code{DGEList} object. If FALSE, counts are returned as a data frame. Defaults to FALSE.}
 
-\item{...}{(optional) parameters passed to \code{DGEList}.}
+\item{...}{(optional) parameters passed to normalization functions.}
 }
 \value{
 a data frame or \code{DGEList} object containing the processed counts.

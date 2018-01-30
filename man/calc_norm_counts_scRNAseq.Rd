@@ -28,6 +28,8 @@ calc_norm_counts_scRNAseq(
 \item{log2_transform}{logical, whether to log2 transform the counts. Defaults to \code{FALSE}.}
 
 \item{transpose}{logical, whether to transpose the matrix or data frame of counts.}
+
+\item{...}{(optional) parameters passed to normalization functions.}
 }
 \value{
 a data frame containing the processed counts.
