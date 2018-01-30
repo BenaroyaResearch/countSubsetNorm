@@ -54,11 +54,7 @@ calc_norm_counts <-
   if (return_DGEcounts) return(DGEcounts)
   
   if (normalize) {
-    normCounts <-
-      as.data.frame(
-        sweep(
-          counts, 2,
-          with(DGEcounts$samples, lib.size * norm.factors), "/") * 1000000)
+    normCounts <- edgeR::cpm(DGEcounts, normalized.lib.sizes=TRUE)
   } else normCounts <- counts
   
   # log-transform and/or transpose counts
