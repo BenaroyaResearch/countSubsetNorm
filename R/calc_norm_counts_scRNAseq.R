@@ -51,6 +51,10 @@ calc_norm_counts_scRNAseq <-
     
     # normalize using the cell deconvolution algorithm
     if (normalize & (norm_method == "deconvolution")) {
+      if (!requireNamespace("scran", quietly = TRUE))
+        stop("Package \"scran\" needed for deconvolution normalization. ",
+             "Please install it or select a different normalization method.",
+             call. = FALSE)
       decon_norm_factors <-
         scran::computeSumFactors(as.matrix(counts), ...)
       normCounts <- as.data.frame(t(t(counts)/decon_norm_factors))

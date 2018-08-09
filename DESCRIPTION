@@ -1,11 +1,12 @@
 Package: countSubsetNorm
 Title: RNAseq counts subsetting and normalizing.
-Version: 0.0.0.9001
+Version: 0.0.0.9002
 Authors@R: person("Matthew", "Dufort", email = "matt.dufort@gmail.com", role = c("aut", "cre"))
 Description: This package provides functions to facilitate subsetting and
     normalizing counts from RNAseq data. These functions are designed for use prior
     to analysis, or in subsetting data for analysis of portions of data sets.
-Imports: edgeR, scran
+Imports: edgeR
+Suggests: scran
 Depends:
     R (>= 3.2.2)
 License: GPL-3

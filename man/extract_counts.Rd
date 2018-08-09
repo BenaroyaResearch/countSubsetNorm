@@ -8,7 +8,7 @@
 extract_counts(counts, return_class=NULL)}
 }
 \arguments{
-\item{counts}{an object from which counts can be extracted. May be of class matrix, data.frame, EList, DGElist (others to be added).}
+\item{counts}{an object from which counts can be extracted. May be of class matrix, data.frame, EList, DGElist, ExpressionSet, eSet.}
 
 \item{return_class}{optional, the class for the object to be returned. Defaults to NULL, which causes the counts portion of the object to be returned as-is.}
 }
