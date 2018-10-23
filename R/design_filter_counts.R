@@ -10,6 +10,6 @@
 #' @return a matrix or data frame with the same number of rows as \code{counts}
 #' @usage \code{design_filter_counts(counts, design, libID_col)}
 design_filter_counts <- function(counts, design, libID_col) {
-  keepCols <- colnames(counts) %in% design[,libID_col]
-  counts <- counts[,keepCols]
+  keepCols <- colnames(counts) %in% design[, libID_col, drop=TRUE]
+  counts <- counts[, keepCols]
 }
