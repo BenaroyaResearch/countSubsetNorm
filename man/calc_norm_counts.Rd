@@ -48,7 +48,8 @@ a DGEList object or a data frame.
 }
 \details{
 This function utilizes \code{design_filter_counts} and (optionally) \code{min_filter_counts}
- to filter the counts object. It then (optionally) normalizes the counts, using
+ to filter the counts object. Genes are filtered by expression if a non-Null value is provided for either
+ \code{min_count} or \code{min_cpm}. It then (optionally) normalizes the counts, using
  \code{edgeR::calcNormFactors}. It then (optionally) log2-transforms the counts and/or transposes
  the counts object. Finally, it returns the counts either as a data frame, or as a \code{DGEList}
  object.
